@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function install_identity_generator() {
     # Check if identity file already exists
     if [[ -f "/usr/local/bin/identity" ]]; then

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo docker pull storxnetwork/storxnode-2:latest
 
 echo "Stopping and Removing the existing StorX Node Container"

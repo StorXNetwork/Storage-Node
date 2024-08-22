@@ -68,7 +68,7 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 
 Bootstrap Command StorX Node Setup :-
 ```
-    sudo bash clone_repo.sh
+    sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/clone_repo.sh)" root
     cd Storage-Node
 
     sudo bash bootstrap.sh

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if command -v docker &> /dev/null; then
     echo "Docker is already installed."
 else

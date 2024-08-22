@@ -29,7 +29,7 @@ function env_creation_and_repo_setup(){
     read -p "Please enter your Email Address :- " EMAIL
     IP_ADDRESS=$(curl https://checkip.amazonaws.com)
 
-    echo "Your XDC Wallet Address is ${WALLETADD}, Email Address is ${EMAILADD} and IP Address is ${IP_ADDRESS}"
+    echo "Your XDC Wallet Address is ${WALLET}, Email Address is ${EMAIL} and IP Address is ${IP_ADDRESS}"
 
     echo "Installing Git      "
 

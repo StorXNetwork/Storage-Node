@@ -40,7 +40,7 @@ For low-reputation nodes, there is provision of the penalties in the form of $SR
 
 ## How to maintain a good node reputation?
 A node which meets all the requirements mentioned in the [readme](https://github.com/StorXNetwork/Storage-Node#initial-set-up) will be considered a robust node. Its reputation will steadily increase with continual participation in the network. As the primary factor for increase in reputation of a node is its contribution to the network, more node activity on the network will result in better reputation for the node. For boosting reputation, therefore, node owners aka farmers are advised to share and use the StorX App as much as possible.
-To check reputation, users can go to their farmer [dashboard](https://farmer.storx.io/). Our team is working on a dedicated dashboard that will demonstrate the node’s statistics in more detail.
+To check reputation, users can go to their farmer [dashboard](https://farmer.storx.io/) or dedicated node dashboard on http://<node-ip>:14002.
 
 
 ## Feedback and suggestions

@@ -1,11 +1,11 @@
 # Storage Node Setup Guide | StorX Network
 
-**Run or Upgrade a Farmer/Storage Node on StorX Network**
+**Run or Upgrade a Storage Node on StorX Network**
 
-This guide will instruct you how to set up or upgrade Farmer/Storage Node on the StorX Network
+This guide will instruct you how to set up or upgrade Storage Node on the StorX Network
 
 **Preliminaries**
-- Running a Storage Node on a live network is a responsible job. The credibility of the complete network depends upon the performance of Farmer/Storage Nodes.
+- Running a Storage Node on a live network is a responsible job. The credibility of the complete network depends upon the performance of Storage Nodes.
 - If there are any issues the possibility of your node getting slashed.
 - To compensate for the efforts, running a community memes are rewarded with SRX Tokens, knowing that you contribute to the security of a decentralized network while growing your stash.
 
@@ -15,7 +15,7 @@ If you need help, please reach out on the [Community Page](https://storx.tech/su
 
 **How many SRX (StorX Native Tokens) do I need?**
 
-To qualify for Farmer/Storage Node on StorX Network, you need between **6000 - 1 Million SRX,** with the existential deposit, plus **XDC for transaction fees.**
+To qualify for Storage Node on StorX Network, you need between **6000 - 1 Million SRX,** with the existential deposit, plus **XDC for transaction fees.**
 
 **Note: The minimum staking amount will be updated as per the new incremental model from 03/08/2021 onwards. [Refer](https://medium.com/storx-network/storx-farm-node-minimum-staking-increment-model-to-avoid-srx-token-inflation-7a343cf89401)**
 
@@ -33,7 +33,7 @@ We requests Storage Node operators to maintain Good Node Reputation to ensure St
 **Warning:**
 
 - Underperformance can lead to disqualification of nodes, which can lead to No ‘hosting and staking rewards’. Repeated low reputation can lead to a penalty; Staked SRX might be burned as a penalty as it may harm StorX Storage Network.
-- Any SRX that you stake for Farmer/Storage Node on StorX Network is liable to be slashed, meaning that an insecure or improper setup may result in loss of reputation leading to slashing of Farmer/Storage Node on StorX Network.
+- Any SRX that you stake for Storage Node on StorX Network is liable to be slashed, meaning that an insecure or improper setup may result in loss of reputation leading to slashing of Storage Node on StorX Network.
 
 -----
 
@@ -43,7 +43,7 @@ We requests Storage Node operators to maintain Good Node Reputation to ensure St
 
 The most common way for a beginner to run a validator is on a cloud server running Linux. You may choose whatever VPS provider that you prefer, and whatever operating system you are comfortable with. For this guide we will be using Ubuntu 20.04 64-bit or higher, but the instructions should be similar for other platforms.
 
-The storage operations in Farmer/Storage Node on StorX were benchmarked on standard hardware. It is recommended that you run at least the standard hardware in order to ensure they are able to process all storage requirements. The following are not minimum requirements but if you decide to run with less than this beware that you might have performance issues.
+The storage operations in Storage Node on StorX were benchmarked on standard hardware. It is recommended that you run at least the standard hardware in order to ensure they are able to process all storage requirements. The following are not minimum requirements but if you decide to run with less than this beware that you might have performance issues.
 
 - Six Processor Core
 - RAM 8 GB (16 GB Recommended)
@@ -62,9 +62,9 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 
 ---
 
-# How to Setup StorX Farmer node
+# How to Setup StorX Storage Node
 
-**Method 1:- Setup StorX Farmer node Bootstrap Script**
+**Method 1:- Setup StorX Storage Node | Bootstrap Script**
 
 Bootstrap Command StorX Node Setup :-
 ```bash
@@ -90,6 +90,11 @@ Run:
     sudo bash start-node.sh
 ```
 
+**For Checking logs if the node is running**
+```bash
+    sudo bash check-logs.sh
+```
+
 To stop the node or if you encounter any issues use::
 
 ```bash
@@ -99,14 +104,14 @@ To stop the node or if you encounter any issues use::
 
 **Step 3: Stake SRX token**
 
-After setting up FarmNode/StorageNode please Stake SRX token from the URL : https://farmer.storx.io/
+After setting up StorageNode please Stake SRX token from the URL : https://farmer.storx.io/
 
 IMP Note : You have to stake SRX token to get hosting and staking rewards.
 
 ## How to Check Status
 To check status of your node you can visit your node dashboard anytime by visiting the URL : http://<your-node-ip>:14002
 
-## How to Upgrade your StorX Farmer Node
+## How to Upgrade your StorX Storage Node
 How to upgrade your StorX node with the latest changes?
 
 ```bash

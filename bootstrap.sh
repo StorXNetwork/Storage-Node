@@ -29,7 +29,7 @@ function env_creation_and_repo_setup(){
     if grep -q "WALLET=WALLET" .env; then
         read -p "Please enter your XDC Address for StorX Rewards :- " WALLET
         # if WALLET don't have prefix xdc then give error and close the script
-        if [[ ! $WALLET =~ ^xdc.* ]]; then
+        if [[ ! $WALLET =~ ^(xdc|0x)[a-fA-F0-9]{40}$ ]]; then
             echo "Invalid XDC Address. Please enter a valid XDC Address."
             exit 1
         fi

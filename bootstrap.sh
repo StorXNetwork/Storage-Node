@@ -28,16 +28,31 @@ function env_creation_and_repo_setup(){
     # check if .env file contains EMAIL and WALLET
     if grep -q "WALLET=WALLET" .env; then
         read -p "Please enter your XDC Address for StorX Rewards :- " WALLET
+        # if WALLET don't have prefix xdc then give error and close the script
+        if [[ ! $WALLET =~ ^xdc.* ]]; then
+            echo "Invalid XDC Address. Please enter a valid XDC Address."
+            exit 1
+        fi
         sed -i "s/WALLET=WALLET/WALLET=${WALLET}/g" .env
     fi
 
     if grep -q "EMAIL=EMAIL" .env; then
         read -p "Please enter your Email Address :- " EMAIL
+        # if EMAIL is not valid then give error and close the script
+        if [[ ! $EMAIL =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+            echo "Invalid Email Address. Please enter a valid Email Address."
+            exit 1
+        fi
         sed -i "s/EMAIL=EMAIL/EMAIL=${EMAIL}/g" .env
     fi
 
     if grep -q "ADDRESS=IP_ADDRESS" .env; then
         IP_ADDRESS=$(curl https://checkip.amazonaws.com)
+        # if IP_ADDRESS is not valid then give error and close the script
+        if [[ ! $IP_ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid IP Address. Please enter a valid IP Address."
+            exit 1
+        fi
         sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${IP_ADDRESS}/g" .env
     fi
 

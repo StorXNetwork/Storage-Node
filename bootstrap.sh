@@ -25,42 +25,47 @@ function remove_node_v1_if_exists() {
 }
 
 function env_creation_and_repo_setup(){
-    read -p "Please enter your XDC Address for StorX Rewards :- " WALLET
-    read -p "Please enter your Email Address :- " EMAIL
-    IP_ADDRESS=$(curl https://checkip.amazonaws.com)
+    # check if .env file contains EMAIL and WALLET
+    if grep -q "WALLET=WALLET" .env; then
+        read -p "Please enter your XDC Address for StorX Rewards :- " WALLET
+        sed -i "s/WALLET=WALLET/WALLET=${WALLET}/g" .env
+    fi
 
-    echo "Your XDC Wallet Address is ${WALLET}, Email Address is ${EMAIL} and IP Address is ${IP_ADDRESS}"
+    if grep -q "EMAIL=EMAIL" .env; then
+        read -p "Please enter your Email Address :- " EMAIL
+        sed -i "s/EMAIL=EMAIL/EMAIL=${EMAIL}/g" .env
+    fi
 
-    echo "Installing Git      "
+    if grep -q "ADDRESS=IP_ADDRESS" .env; then
+        IP_ADDRESS=$(curl https://checkip.amazonaws.com)
+        sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${IP_ADDRESS}/g" .env
+    fi
 
-    sudo apt-get update
+    # get the values from env file and print them
+    WALLET=$(grep WALLET .env | cut -d '=' -f2)
+    EMAIL=$(grep EMAIL .env | cut -d '=' -f2)
+    ADDRESS=$(grep ADDRESS .env | cut -d '=' -f2)
 
-    sudo apt-get install \
-            apt-transport-https \
-            ca-certificates \
-            curl \
-            git \
-            software-properties-common -y
-
-    sed -i "s/WALLET=WALLET/WALLET=${WALLET}/g" .env
-    sed -i "s/EMAIL=EMAIL/EMAIL=${EMAIL}/g" .env
-    sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${IP_ADDRESS}/g" .env
+    echo "Configured values are as follows:"
+    echo "WALLET: $WALLET"
+    echo "EMAIL: $EMAIL"
+    echo "ADDRESS: $ADDRESS"
 }
 
 function main() {
     # Creation of config location if it doesn't exist
     sudo bash install_docker.sh
     remove_node_v1_if_exists
+    env_creation_and_repo_setup
 
     if [[ -d ~/.storx ]]; then
         echo "setup is already done. Skipping creation."
     else
         mkdir -p ~/.storx/identity
         mkdir -p ~/.storx/config
-        env_creation_and_repo_setup
     fi
 
-    sudo bash ./identity_creation.sh || exit 1
+    sudo bash identity_creation.sh || exit 1
 
     echo "Setup completed successfully. You can now start the node by sh start-node.sh"
 }

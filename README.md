@@ -87,7 +87,7 @@ Once identity file process is started in background you need to wait for some ho
 **For MainNet**
 Run:
 ```
-    ./start-node.sh
+    sudo bash start-node.sh
 ```
 
 To stop the node or if you encounter any issues use::

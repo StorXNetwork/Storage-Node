@@ -9,7 +9,7 @@ function install_identity_generator() {
         # Download and install identity file
 
         curl -L https://github.com/StorXNetwork/StorXMonitor/releases/latest/download/identity_linux_amd64.zip -o /tmp/identity_linux_amd64.zip
-        unzip -o /tmp/identity_linux_amd64.zip -d /usr/local/bin/identity
+        unzip -o /tmp/identity_linux_amd64.zip -d /usr/local/bin
         chmod +x /usr/local/bin/identity
         echo "Identity binary installed."
     fi

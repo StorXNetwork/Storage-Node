@@ -10,7 +10,33 @@ if [[ ! -f ~/.storx/identity/ca.cert && ! -f ~/.storx/identity/identity.cert ]];
     exit 1
 fi
 
+echo "Validating env values"
+WALLET=$(grep WALLET .env | cut -d '=' -f2)
+EMAIL=$(grep EMAIL .env | cut -d '=' -f2)
+ADDRESS=$(grep ADDRESS .env | cut -d '=' -f2)
+
+
+if [[ ! $WALLET =~ ^(xdc)[a-fA-F0-9]{40}$ ]]; then
+    echo "Invalid XDC Address. Please enter a valid XDC Address." $WALLET
+    exit 1
+fi
+
+# if EMAIL is not valid then give error and close the script
+if [[ ! $EMAIL =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+    echo "Invalid Email Address. Please enter a valid Email Address."
+    exit 1
+fi
+
+if [[ ! $IP_ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "Invalid IP Address. Please enter a valid IP Address."
+    exit 1
+fi
+
 echo "Starting the StorX Node setup..."
+echo "Wallet: $WALLET"
+echo "Email: $EMAIL"
+echo "Address: $ADDRESS"
+
 
 STORXDATA=~/.storx
 CONFIGPATH="$STORXDATA"/config

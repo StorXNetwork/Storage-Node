@@ -73,9 +73,8 @@ function main() {
     remove_node_v1_if_exists
     env_creation_and_repo_setup
 
-    if [[ -d ~/.storx ]]; then
-        echo "setup is already done. Skipping creation."
-    else
+    if [[ ! -d ~/.storx ]]; then
+        echo "Creating directories for StorX node"
         mkdir -p ~/.storx/identity
         mkdir -p ~/.storx/config
     fi

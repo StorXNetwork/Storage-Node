@@ -8,6 +8,28 @@ function install_identity_generator() {
         sudo apt-get install -y curl unzip
         # Download and install identity file
 
+        # get linux architecture | amd64 or arm
+        architecture=""
+        # Get the architecture using uname -m
+        # Determine the architecture and convert it to the required format
+        case "$(uname -m)" in
+            x86_64)
+                architecture="amd64"
+                ;;
+            aarch64)
+                architecture="arm64"
+                ;;
+            armv7l|armv8l|arm)
+                architecture="arm"
+                ;;
+        esac
+
+        # supported architecture are amd64, arm and arm64. if architecture is not supported then exit
+        if [[ "$architecture" != "amd64" && "$architecture" != "arm" && "$architecture" != "arm64" ]]; then
+            echo "Your architecture is not supported by the StorXMonitor. Please contact support@storx.io for help."
+            exit 1
+        fi
+
         curl -L https://github.com/StorXNetwork/StorXMonitor/releases/latest/download/identity_linux_amd64.zip -o /tmp/identity_linux_amd64.zip
         unzip -o /tmp/identity_linux_amd64.zip -d /usr/local/bin
         chmod +x /usr/local/bin/identity

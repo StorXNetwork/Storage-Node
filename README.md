@@ -1,12 +1,12 @@
-# StorX Farmer Node
+# Storage Node Setup Guide | StorX Network
 
-**Run a Farmer/Storage Node on StorX Network**
+**Run or Upgrade a Farmer/Storage Node on StorX Network**
 
-This guide will instruct you how to set up Farmer/Storage Node on the StorX Network
+This guide will instruct you how to set up or upgrade Farmer/Storage Node on the StorX Network
 
 **Preliminaries**
-- Running a Storage Node on a live network is a responsible job. The credibility of the complete network depends upon the performance of Farmer/Storage Nodes. 
-- If there are any issues the possibility of your node getting slashed. 
+- Running a Storage Node on a live network is a responsible job. The credibility of the complete network depends upon the performance of Farmer/Storage Nodes.
+- If there are any issues the possibility of your node getting slashed.
 - To compensate for the efforts, running a community memes are rewarded with SRX Tokens, knowing that you contribute to the security of a decentralized network while growing your stash.
 
 If you need help, please reach out on the [Community Page](https://storx.tech/support.html). The community members are there to help answer questions and provide tips from experience.
@@ -57,7 +57,7 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 
 **Key Management**
 
-- Private keys are the central primitive of any cryptographic system and need to be handled with extreme care. 
+- Private keys are the central primitive of any cryptographic system and need to be handled with extreme care.
 - Loss of your private key can lead to irreversible loss of value.
 
 ---
@@ -66,77 +66,40 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 
 **Method 1:- Setup StorX Farmer node Bootstrap Script**
 
-Bootstrap Command StorX Node Setup :- 
+Bootstrap Command StorX Node Setup :-
 ```
-    sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/StorX-Node/main/bootstrap.sh)" root 
+    sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/bootstrap.sh)" root
 ```
-Examples :- 
+Examples :-
 ```
-    root……..:~# sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/StorX-Node/main/bootstrap.sh)" root
+    root……..:~# sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/bootstrap.sh)" root
     Please enter your XDC Address for StorX Rewards:- xdc……
 ```
 ------
 
-**Method 2:- Setup StorX Farmer Node Docker**
-
-- **Operating System**: Ubuntu 20.04 64-bit or higher
-Should be facing internet directly with **public IP** & **without NAT**
-
-- **Tools**: Docker, Docker Compose (1.29.2+)
-Setup (For Ubuntu 20.04 64-bit or higher Operating System)
-
----------------------------------
-
-**Clone repository**
-```
-    git clone https://github.com/StorXNetwork/StorX-Node
-```
-
-Enter StorX-Node directory
-```
-    cd StorX-Node
-```
----------------------------------
-
-**Step 1: Install docker & docker-compose**
-```
-    sudo bash ./install_docker.sh
-```
-**Step 2: Update .env file with details**
-- Create `.env` file by using the sample - `.env.example`
-- Enter either your StorX Rewards address in the WALLETADD field.
-```
-    cp env.example .env
-    nano .env
-```
-
-**Step 3: Start your Node**
+**Step 2: Start your Node**
 
 **For MainNet**
 Run:
 ```
-    sudo docker-compose -f docker-services.yml up -d
+    ./start-node.sh
 ```
 
 To stop the node or if you encounter any issues use::
 
 ```
-    sudo docker-compose -f docker-services.yml down
+    TODO
 ```
 ---------------------------------
 
-**Step 4: Stake SRX token**
+**Step 3: Stake SRX token**
 
 After setting up FarmNode/StorageNode please Stake SRX token from the URL : https://farmer.storx.io/
 
 IMP Note : You have to stake SRX token to get hosting and staking rewards.
 
 ## How to Check Status
-To check the status of your node:
-
-```
-    sudo bash ./getstatus.sh
-```
+To check status of your node you can visit your node dashboard anytime by visiting the URL : http://<your-node-ip>:14002
 
 ## How to Upgrade your StorX Farmer Node
 How to upgrade your StorX node with the latest changes?
@@ -149,7 +112,7 @@ How to upgrade your StorX node with the latest changes?
 ## Troubleshooting
 
 
-Public discussions on the technical issues, post articles and request for Enhancements and Technical Contributions. 
+Public discussions on the technical issues, post articles and request for Enhancements and Technical Contributions.
 
 - [Telegram](https://t.me/StorXNetwork) - Stay updated with all the Announcements.
 - [Discord](https://discord.gg/ha4Jufj2Nm) - Join the community to find answers to all your questions.

@@ -5,12 +5,12 @@ function install_identity_generator() {
     if [[ -f "/usr/local/bin/identity" ]]; then
         echo "Identity binary already exists. Skipping download."
     else
+        sudo apt-get install -y curl unzip
         # Download and install identity file
-        cd
-        curl -L https://github.com/StorXNetwork/StorXMonitor/releases/latest/download/identity_linux_amd64.zip -o identity_linux_amd64.zip
-        unzip -o identity_linux_amd64.zip
-        chmod +x identity
-        sudo mv identity /usr/local/bin/identity
+
+        curl -L https://github.com/StorXNetwork/StorXMonitor/releases/latest/download/identity_linux_amd64.zip -o /tmp/identity_linux_amd64.zip
+        unzip -o /tmp/identity_linux_amd64.zip -d /usr/local/bin/identity
+        chmod +x /usr/local/bin/identity
         echo "Identity binary installed."
     fi
 }
@@ -41,7 +41,7 @@ function identity_creation() {
         if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
             echo "Creating identity file. this process will take some hours."
             install_identity_generator
-            identity create storagenode &
+            /usr/local/bin/identity create storagenode &
             pid = $!
 
             disown $pid

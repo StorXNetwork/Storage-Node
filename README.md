@@ -67,7 +67,7 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 **Method 1:- Setup StorX Farmer node Bootstrap Script**
 
 Bootstrap Command StorX Node Setup :-
-```
+```bash
     sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/clone_repo.sh)" root
     cd Storage-Node
 
@@ -76,7 +76,7 @@ Bootstrap Command StorX Node Setup :-
 
 Once identity file process is started in background you need to wait for some hours and then again run bootstrap file
 
-```
+```bash
     sudo bash bootstrap.sh
 ```
 
@@ -86,14 +86,14 @@ Once identity file process is started in background you need to wait for some ho
 
 **For MainNet**
 Run:
-```
+```bash
     sudo bash start-node.sh
 ```
 
 To stop the node or if you encounter any issues use::
 
-```
-    TODO
+```bash
+    sudo bash stop-node.sh
 ```
 ---------------------------------
 
@@ -109,8 +109,7 @@ To check status of your node you can visit your node dashboard anytime by visiti
 ## How to Upgrade your StorX Farmer Node
 How to upgrade your StorX node with the latest changes?
 
-```
-    git pull
+```bash
     sudo bash ./upgrade.sh
 ```
 

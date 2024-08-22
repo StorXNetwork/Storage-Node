@@ -49,7 +49,7 @@ function env_creation_and_repo_setup(){
 
 function main() {
     # Creation of config location if it doesn't exist
-    sudo sh install_docker.sh
+    sudo bash install_docker.sh
     remove_node_v1_if_exists
 
     if [[ -d ~/.storx ]]; then
@@ -60,7 +60,7 @@ function main() {
         env_creation_and_repo_setup
     fi
 
-    sudo sh ./identity_creation.sh
+    sudo bash ./identity_creation.sh
 
     echo "Setup completed successfully. You can now start the node by sh start-node.sh"
 }

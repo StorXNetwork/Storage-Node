@@ -42,7 +42,7 @@ function identity_creation() {
             echo "Creating identity file. this process will take some hours."
             install_identity_generator
             /usr/local/bin/identity create storagenode &
-            pid = $!
+            pid=$!
 
             disown $pid
 

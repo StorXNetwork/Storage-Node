@@ -42,9 +42,6 @@ function env_creation_and_repo_setup(){
             git \
             software-properties-common -y
 
-    echo "Clone StorX Node"
-
-    git clone https://github.com/StorXNetwork/Storage-Node && cd Storage-Node
     sed -i "s/WALLET=WALLET/WALLET=${WALLET}/g" .env
     sed -i "s/EMAIL=EMAIL/EMAIL=${EMAIL}/g" .env
     sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${IP_ADDRESS}/g" .env

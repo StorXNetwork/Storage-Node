@@ -68,13 +68,18 @@ The storage operations in Farmer/Storage Node on StorX were benchmarked on stand
 
 Bootstrap Command StorX Node Setup :-
 ```
-    sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/bootstrap.sh)" root
+    sudo bash clone_repo.sh
+    cd Storage-Node
+
+    sudo bash bootstrap.sh
 ```
-Examples :-
+
+Once identity file process is started in background you need to wait for some hours and then again run bootstrap file
+
 ```
-    root……..:~# sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/StorXNetwork/Storage-Node/main/bootstrap.sh)" root
-    Please enter your XDC Address for StorX Rewards:- xdc……
+    sudo bash bootstrap.sh
 ```
+
 ------
 
 **Step 2: Start your Node**

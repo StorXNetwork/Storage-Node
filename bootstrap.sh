@@ -60,7 +60,7 @@ function main() {
         env_creation_and_repo_setup
     fi
 
-    sudo bash ./identity_creation.sh
+    sudo bash ./identity_creation.sh || exit 1
 
     echo "Setup completed successfully. You can now start the node by sh start-node.sh"
 }

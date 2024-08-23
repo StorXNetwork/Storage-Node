@@ -5,4 +5,4 @@ git pull
 
 echo "Upgrading StorX Network node"
 # run upgrade-steps.sh
-./upgrade-steps.sh
+sudo bash upgrade-steps.sh

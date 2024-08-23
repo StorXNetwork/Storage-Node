@@ -27,7 +27,7 @@ function remove_node_v1_if_exists() {
 function env_creation_and_repo_setup(){
     # copy .env_example to .env if it doesn't exist
     if [[ ! -f .env ]]; then
-        cp .env_example .env
+        cp .env.sample .env
     fi
 
     # check if .env file contains EMAIL and WALLET

@@ -1,1 +1,2 @@
 docker stop storage_node_container
+docker rm storage_node_container

@@ -1,4 +1,16 @@
 #!/bin/bash
+# check if there is docker installed or not
+if ! [ -x "$(command -v docker)" ]; then
+    echo "Docker is not installed. Please install docker first. for that you can use bootstrap.sh, install_docker.sh or install manually."
+    exit 1
+fi
+
+# check if there is any container with the same name storage_node_container
+if [[ $(docker ps -a --format '{{.Names}}' | grep storage_node_container | wc -l) -gt 0 ]]; then
+    echo "A container with the name storage_node_container already exists. Please remove the container first. for that use stop-node.sh or upgrade.sh"
+    exit 1
+fi
+
 # check if identity create storagenode command is running in the background
 if [[ $(ps -ef | grep -v grep | grep "identity create storagenode" | wc -l) -gt 0 ]]; then
     echo "Identity creation is already running in the background. Please wait for it to finish."

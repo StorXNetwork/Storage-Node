@@ -39,7 +39,7 @@ if [[ ! $EMAIL =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
     exit 1
 fi
 
-if [[ ! $IP_ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ ! $ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(:28967)$ ]]; then
     echo "Invalid IP Address. Please enter a valid IP Address."
     exit 1
 fi

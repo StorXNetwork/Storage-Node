@@ -54,7 +54,7 @@ function env_creation_and_repo_setup(){
     if grep -q "ADDRESS=IP_ADDRESS" .env; then
         IP_ADDRESS=$(curl https://checkip.amazonaws.com)
         # if IP_ADDRESS is not valid then give error and close the script
-        if [[ ! $IP_ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        if [[ ! $ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(:28967)$ ]]; then
             echo "Invalid IP Address. Please enter a valid IP Address."
             exit 1
         fi

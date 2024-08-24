@@ -52,13 +52,13 @@ function env_creation_and_repo_setup(){
     fi
 
     if grep -q "ADDRESS=IP_ADDRESS" .env; then
-        IP_ADDRESS=$(curl https://checkip.amazonaws.com)
+        ADDRESS=$(curl https://checkip.amazonaws.com)
         # if IP_ADDRESS is not valid then give error and close the script
-        if [[ ! $ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(:28967)$ ]]; then
+        if [[ ! $ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Invalid IP Address. Please enter a valid IP Address."
             exit 1
         fi
-        sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${IP_ADDRESS}/g" .env
+        sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${ADDRESS}:28967/g" .env
     fi
 
     # get the values from env file and print them

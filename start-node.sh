@@ -17,15 +17,16 @@ if [[ $(ps -ef | grep -v grep | grep "identity create storagenode" | wc -l) -gt 
     exit 1
 fi
 
-if [[ ! -f ~/.storx/identity/ca.cert && ! -f ~/.storx/identity/identity.cert ]]; then
-    echo "Identity cert and key files already exist. Skipping identity creation."
+if [[ ! -f ~/.storx/identity/ca.cert || ! -f ~/.storx/identity/identity.cert ]]; then
+    echo "Identity cert/key missing. Please run bootstrap.sh first."
     exit 1
 fi
 
 echo "Validating env values"
-WALLET=$(grep WALLET .env | cut -d '=' -f2)
-EMAIL=$(grep EMAIL .env | cut -d '=' -f2)
-ADDRESS=$(grep ADDRESS .env | cut -d '=' -f2)
+WALLET=$(grep '^WALLET=' .env | cut -d '=' -f2)
+EMAIL=$(grep '^EMAIL=' .env | cut -d '=' -f2)
+ADDRESS=$(grep '^ADDRESS=' .env | cut -d '=' -f2)
+USER_ID=$(grep '^USER_ID=' .env | cut -d '=' -f2 || true)
 
 
 if [[ ! $WALLET =~ ^(xdc)[a-fA-F0-9]{40}$ ]]; then
@@ -44,10 +45,23 @@ if [[ ! $ADDRESS =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+(:28967)$ ]]; then
     exit 1
 fi
 
+# USER_ID is optional for public nodes; set from CyberLS setup for own-nodes bind.
+if [[ -n "$USER_ID" && "$USER_ID" != "USER_ID" ]]; then
+    if [[ ! $USER_ID =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ ]]; then
+        echo "Invalid USER_ID. Expected a UUID from CyberLS setup."
+        exit 1
+    fi
+else
+    USER_ID=""
+fi
+
 echo "Starting the StorX Node setup..."
 echo "Wallet: $WALLET"
 echo "Email: $EMAIL"
 echo "Address: $ADDRESS"
+if [[ -n "$USER_ID" ]]; then
+    echo "User ID (CyberLS bind): $USER_ID"
+fi
 
 
 STORXDATA=~/.storx

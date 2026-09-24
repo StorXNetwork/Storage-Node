@@ -61,15 +61,24 @@ function env_creation_and_repo_setup(){
         sed -i "s/ADDRESS=IP_ADDRESS/ADDRESS=${ADDRESS}:28967/g" .env
     fi
 
+    # Ensure USER_ID key exists (CyberLS own-nodes bind; set from UI cmds, not prompted here).
+    if ! grep -q '^USER_ID=' .env; then
+        echo "USER_ID=" >> .env
+    fi
+
     # get the values from env file and print them
-    WALLET=$(grep WALLET .env | cut -d '=' -f2)
-    EMAIL=$(grep EMAIL .env | cut -d '=' -f2)
-    ADDRESS=$(grep ADDRESS .env | cut -d '=' -f2)
+    WALLET=$(grep '^WALLET=' .env | cut -d '=' -f2)
+    EMAIL=$(grep '^EMAIL=' .env | cut -d '=' -f2)
+    ADDRESS=$(grep '^ADDRESS=' .env | cut -d '=' -f2)
+    USER_ID=$(grep '^USER_ID=' .env | cut -d '=' -f2 || true)
 
     echo "Configured values are as follows:"
     echo "WALLET: $WALLET"
     echo "EMAIL: $EMAIL"
     echo "ADDRESS: $ADDRESS"
+    if [[ -n "$USER_ID" && "$USER_ID" != "USER_ID" ]]; then
+        echo "USER_ID: $USER_ID"
+    fi
 }
 
 function main() {

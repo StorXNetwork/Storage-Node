@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo docker pull storxnetwork/storxnode-2:latest
+sudo docker pull dhaval1204/storxnode-2:staging
 
 echo "Stopping and Removing the existing StorX Node Container"
 sudo docker stop storage_node_container
@@ -12,6 +12,6 @@ docker run -d --restart unless-stopped --stop-timeout 300 \
     --env-file .env \
     --mount type=bind,source="/root/.storx/identity",destination=/app/identity \
     --mount type=bind,source="/root/.storx/config",destination=/app/config \
-    --name storage_node_container storxnetwork/storxnode-2:latest
+    --name storage_node_container dhaval1204/storxnode-2:staging
 
 echo "Congrats! Your Node has been successfully updated with latest changes!"

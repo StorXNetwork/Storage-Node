@@ -75,7 +75,7 @@ fi
 
 if [ ! -e "$CONFIGPATH"/config.yaml ]; then
     echo "Config file not found. Running setup..."
-    docker run --rm -e SETUP="true" --mount type=bind,source="/root/.storx/identity",destination=/app/identity --mount type=bind,source="/root/.storx/config",destination=/app/config --name storage_node_container storxnetwork/storxnode-2:latest
+    docker run --rm -e SETUP="true" --mount type=bind,source="/root/.storx/identity",destination=/app/identity --mount type=bind,source="/root/.storx/config",destination=/app/config --name storage_node_container dhaval1204/storxnode-2:staging
 fi
 
 echo "Starting the StorX Node..."
@@ -85,6 +85,6 @@ docker run -d --restart unless-stopped --stop-timeout 300 \
     --env-file .env \
     --mount type=bind,source="/root/.storx/identity",destination=/app/identity \
     --mount type=bind,source="/root/.storx/config",destination=/app/config \
-    --name storage_node_container storxnetwork/storxnode-2:latest
+    --name storage_node_container dhaval1204/storxnode-2:staging
 
 echo "StorX Node started successfully."

@@ -64,14 +64,14 @@ function identity_creation() {
 
         read -p "Do you want to create an identity file? (y/n) " confirmation
         if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
-            echo "Creating identity file. this process will take some hours."
+            echo "Creating identity file (difficulty 5)."
             install_identity_generator
-            /usr/local/bin/identity create storagenode &
+            /usr/local/bin/identity create storagenode --difficulty 5 &
             pid=$!
 
             disown $pid
 
-            echo "Identity creation started in the background. This process will take some hours. please try same command after some time."
+            echo "Identity creation started in the background. Please try the same command after some time."
             exit 1
         else
             echo "Identity creation skipped."

@@ -3,7 +3,8 @@
 set -euo pipefail
 
 NODE_COUNT="${NODE_COUNT:-10}"
-DIFFICULTY="${DIFFICULTY:-5}"
+# 0 is instant for local testing. Production nodes need DIFFICULTY=5.
+DIFFICULTY="${DIFFICULTY:-0}"
 STORX_ROOT="${STORX_ROOT:-$HOME/.storx}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"

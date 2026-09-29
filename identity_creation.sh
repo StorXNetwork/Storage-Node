@@ -64,9 +64,9 @@ function identity_creation() {
 
         read -p "Do you want to create an identity file? (y/n) " confirmation
         if [[ "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
-            echo "Creating identity file (difficulty 5)."
+            echo "Creating identity file (difficulty 0, test only)."
             install_identity_generator
-            /usr/local/bin/identity create storagenode --difficulty 5 &
+            /usr/local/bin/identity create storagenode --difficulty 0 &
             pid=$!
 
             disown $pid
